@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux';
+import { fromJS } from 'immutable';
+import Matrix from './Matrix/Matrix';
 import './App.css';
 
-function App() {
+const initialState = fromJS(
+  Array(50).fill(false).map(
+    item => Array(50).fill(item)
+  )
+);
+
+// const newState = initialState.setIn([0,0], true)
+// console.log(initialState.getIn([0,0]));
+// console.log(newState.getIn([0,0]));
+// newState.map(row => row.map(cell => console.log(cell)))
+
+
+function App({ matrix }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Matrix matrix={matrix} />
+    </>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    matrix: state.matrixReducer,
+  }
+}
+
+export default connect(mapStateToProps)(App);
