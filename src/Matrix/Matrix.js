@@ -1,10 +1,10 @@
 import React from 'react';
 import Row from '../Row/Row';
 
-function Matrix({ matrix, setMatrix }) {
+function Matrix({ matrix }) {
   return (
     matrix.map((row, index) => (
-      <Row rowState={row} key={index} rowKey={index} setMatrix={setMatrix} matrix={matrix} />
+      <Row rowList={row} key={index} rowKey={index} matrix={matrix} />
     ))
   )
 }

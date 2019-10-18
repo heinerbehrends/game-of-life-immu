@@ -1,34 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fromJS } from 'immutable';
 import Matrix from './Matrix/Matrix';
+import Button from './Button/Button';
+import { setMatrix, setDelay } from './actions';
+import useInterval from './useInterval';
+import nextGen from './nextGen';
 import './App.css';
 
-const initialState = fromJS(
-  Array(50).fill(false).map(
-    item => Array(50).fill(item)
-  )
-);
-
-// const newState = initialState.setIn([0,0], true)
-// console.log(initialState.getIn([0,0]));
-// console.log(newState.getIn([0,0]));
-// newState.map(row => row.map(cell => console.log(cell)))
-
-
-function App({ matrix }) {
+function App({ matrix, setMatrix, delay, setDelay }) {
+  useInterval(() => { setMatrix(nextGen(matrix)) }, delay);
   return (
     <>
       <Matrix matrix={matrix} />
+      <Button onClick={() => { delay ? setDelay(null) : setDelay(100) }}>
+        {delay ? 'Stop' : 'Start'}
+      </Button>
     </>
   );
 }
 
-const mapStateToProps = state => {
-  console.log(state)
+function mapStateToProps(state) {
   return {
     matrix: state.matrixReducer,
+    delay: state.delayReducer,
   }
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return {
+    setMatrix: matrix => dispatch(setMatrix(matrix)),
+    setDelay: ms => dispatch(setDelay(ms)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

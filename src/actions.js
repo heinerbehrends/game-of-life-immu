@@ -2,25 +2,25 @@ export const DELAY = 'DELAY';
 export const MATRIX = 'MATRIX';
 export const CELL = 'CELL';
 
-export function changeDelay(time) {
+export function setDelay(ms) {
   return {
     type: DELAY,
-    time,
+    ms,
   };
 }
 
-export function changeCell(xy) {
+export function setCell(xy) {
   return {
     type: CELL,
     xy,
   };
 }
 
-function changeMatrix(matrix) {
+export function setMatrix(matrix) {
   return {
     type: MATRIX,
     matrix
   }
 }
 
-export default changeMatrix;
+export default setMatrix;

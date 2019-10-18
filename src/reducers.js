@@ -26,7 +26,7 @@ export function matrixReducer(state = initialState, action) {
 export function delayReducer(state = null, action) {
   switch (action.type) {
     case DELAY:
-      return 500;
+      return action.ms;
     default:
       return state;
   }
