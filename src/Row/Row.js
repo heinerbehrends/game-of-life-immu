@@ -9,7 +9,7 @@ const Row = React.memo(function Row({ rowList, rowKey }) {
   const row = rowList.map((value, index) => (
     <Cell isAlive={value} key={index} x={rowKey} y={index} />
   ));
-  // console.log(`Row ${rowKey} renders`);
   return <div>{row}</div>;
 }, propsAreEqual);
+
 export default Row;
