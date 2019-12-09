@@ -1,4 +1,4 @@
-### Game-of-life-immu
+# Game-of-life-immu
 
 Game-of-life-immu is an implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). Game of Life is a cellular automaton devised by the British mathematician [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway) in 1970.
 
