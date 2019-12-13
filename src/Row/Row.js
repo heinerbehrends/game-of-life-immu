@@ -5,11 +5,11 @@ function propsAreEqual(prev, next) {
   return prev.rowList === next.rowList;
 }
 
-const Row = React.memo(function Row({ rowList, rowKey }) {
+function Row({ rowList, rowKey }) {
   const row = rowList.map((value, index) => (
-    <Cell isAlive={value} key={index} x={rowKey} y={index} />
+    <Cell isAlive={value} key={index} y={rowKey} x={index} />
   ));
   return <div>{row}</div>;
-}, propsAreEqual);
+}
 
-export default Row;
+export default React.memo(Row, propsAreEqual);

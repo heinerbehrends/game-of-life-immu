@@ -2,21 +2,21 @@ import { DELAY, MATRIX, CELL } from './actions';
 import { fromJS } from 'immutable';
 
 const initialState = fromJS(
-  Array(50).fill(false).map(
-    item => Array(50).fill(item)
-  )
+  Array(60)
+    .fill(false)
+    .map(item => Array(110).fill(item))
 );
 
 export function matrixReducer(state = initialState, action) {
   switch (action.type) {
-    case MATRIX: 
+    case MATRIX:
       return action.matrix;
     case CELL:
-      const cellState = state.getIn(action.xy)
-      return state.setIn(action.xy, ! cellState)
+      const cellState = state.getIn(action.xy);
+      return state.setIn(action.xy, !cellState);
     default:
       return state;
-  };
+  }
 }
 
 export function delayReducer(state = null, action) {
@@ -25,5 +25,5 @@ export function delayReducer(state = null, action) {
       return action.ms;
     default:
       return state;
-  };
+  }
 }

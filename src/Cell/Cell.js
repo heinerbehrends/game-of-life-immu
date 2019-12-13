@@ -11,13 +11,12 @@ const StyledSquare = styled.div`
   background-color: ${props => (props.isAlive ? 'black' : 'white')};
 `;
 
-const Cell = React.memo(function Cell({ isAlive, x, y, setCell }) {
-  // console.log(`Cell ${x} ${y} renders`);
+function Cell({ isAlive, x, y, setCell }) {
   const handleClick = event => {
-    setCell([x, y]);
+    setCell([y, x]);
   };
   return <StyledSquare isAlive={isAlive} x={x} y={y} onClick={handleClick} />;
-});
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -25,4 +24,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(Cell);
+export default connect(null, mapDispatchToProps)(React.memo(Cell));
