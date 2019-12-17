@@ -1,7 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { setCell } from '../actions';
 
 const StyledSquare = styled.div`
   width: 8px;
@@ -11,17 +10,23 @@ const StyledSquare = styled.div`
   background-color: ${props => (props.isAlive ? 'black' : 'white')};
 `;
 
-function Cell({ isAlive, x, y, setCell }) {
-  const handleClick = event => {
+export const CELL = 'CELL';
+
+function Cell({ isAlive, x, y }) {
+  const dispatch = useDispatch();
+  const setCell = useCallback(
+    () =>
+      dispatch({
+        type: CELL,
+        yx: [y, x],
+      }),
+    [dispatch, x, y]
+  );
+
+  const handleClick = () => {
     setCell([y, x]);
   };
   return <StyledSquare isAlive={isAlive} x={x} y={y} onClick={handleClick} />;
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    setCell: xy => dispatch(setCell(xy)),
-  };
-}
-
-export default connect(null, mapDispatchToProps)(React.memo(Cell));
+export default React.memo(Cell);
