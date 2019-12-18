@@ -1,5 +1,5 @@
 import React from 'react';
-import Cell from '../Cell/Cell';
+import Cell from './Cell';
 
 function propsAreEqual(prev, next) {
   return prev.rowList === next.rowList;

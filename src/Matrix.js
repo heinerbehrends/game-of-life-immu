@@ -1,5 +1,6 @@
-import { DELAY, MATRIX } from './App';
-import { CELL } from './Cell/Cell';
+import React from 'react';
+import Row from './Row';
+import { CELL, MATRIX } from './constants';
 import { fromJS } from 'immutable';
 
 const initialState = fromJS(
@@ -20,11 +21,10 @@ export function matrixReducer(state = initialState, action) {
   }
 }
 
-export function delayReducer(state = null, action) {
-  switch (action.type) {
-    case DELAY:
-      return action.delay;
-    default:
-      return state;
-  }
+function Matrix({ matrix }) {
+  return matrix.map((row, index) => (
+    <Row rowList={row} key={index} rowKey={index} matrix={matrix} />
+  ));
 }
+
+export default Matrix;

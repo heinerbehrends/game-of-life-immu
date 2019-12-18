@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { CELL } from './constants';
 
 const StyledSquare = styled.div`
   width: 8px;
@@ -9,8 +10,6 @@ const StyledSquare = styled.div`
   margin: 0.66px;
   background-color: ${props => (props.isAlive ? 'black' : 'white')};
 `;
-
-export const CELL = 'CELL';
 
 function Cell({ isAlive, x, y }) {
   const dispatch = useDispatch();
