@@ -1,15 +1,8 @@
 import React from 'react';
 import Row from './Row';
 import { CELL, MATRIX } from './constants';
-import { fromJS } from 'immutable';
 
-const initialState = fromJS(
-  Array(60)
-    .fill(false)
-    .map(item => Array(110).fill(item))
-);
-
-export function matrixReducer(state = initialState, action) {
+export function matrixReducer(state, action) {
   switch (action.type) {
     case MATRIX:
       return action.matrix;
