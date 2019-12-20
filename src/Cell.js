@@ -1,14 +1,16 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { CELL } from './constants';
+
+export const CELL = 'CELL';
 
 const StyledSquare = styled.div`
   width: 8px;
   height: 8px;
   display: inline-block;
   margin: 0.66px;
-  background-color: ${props => (props.isAlive ? 'black' : 'white')};
+  background-color: ${props => (props.isAlive ? 'white' : 'black')};
+  border-radius: 50%;
 `;
 
 function Cell({ isAlive, x, y }) {
@@ -19,7 +21,7 @@ function Cell({ isAlive, x, y }) {
         type: CELL,
         yx: [y, x],
       }),
-    [dispatch, x, y]
+    [dispatch, x, y],
   );
 
   const handleClick = () => {
@@ -28,4 +30,4 @@ function Cell({ isAlive, x, y }) {
   return <StyledSquare isAlive={isAlive} x={x} y={y} onClick={handleClick} />;
 }
 
-export default React.memo(Cell);
+export default memo(Cell);

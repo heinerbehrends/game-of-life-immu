@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { DELAY } from './constants';
 
-const StyledButton = styled.button`
+const DELAY = 'DELAY';
+
+const StyledStartStopButton = styled.button`
   background-color: white;
   font-size: 2em;
   width: 4em;
@@ -11,8 +12,8 @@ const StyledButton = styled.button`
   margin: 0.5em;
   padding: 1rem;
 `;
-
-export function delayReducer(state = null, action) {
+// default state is set in store.js
+export function delayReducer(state, action) {
   switch (action.type) {
     case DELAY:
       return action.delay;
@@ -21,21 +22,21 @@ export function delayReducer(state = null, action) {
   }
 }
 
-function Button() {
+function StartStopButton() {
   const delay = useSelector(state => state.delayReducer);
   const dispatch = useDispatch();
   function setDelay(delay) {
     dispatch({ type: DELAY, delay });
   }
   return (
-    <StyledButton
+    <StyledStartStopButton
       onClick={() => {
         delay ? setDelay(null) : setDelay(125);
       }}
     >
       {delay ? 'Stop' : 'Start'}
-    </StyledButton>
+    </StyledStartStopButton>
   );
 }
 
-export default Button;
+export default StartStopButton;

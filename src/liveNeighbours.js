@@ -32,7 +32,6 @@ function foldTorus([y, x], matrix) {
 }
 
 function checkLive([x, y], matrix) {
-  // console.log(`x: ${x}, y: ${y}`);
   return matrix.getIn([y, x]);
 }
 

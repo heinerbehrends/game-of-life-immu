@@ -1,6 +1,8 @@
 import React from 'react';
 import Row from './Row';
-import { CELL, MATRIX } from './constants';
+import { CELL } from './Cell';
+
+export const MATRIX = 'MATRIX';
 
 export function matrixReducer(state, action) {
   switch (action.type) {
