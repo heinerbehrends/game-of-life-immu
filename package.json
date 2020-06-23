@@ -7,7 +7,10 @@
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "acorn": "^7.1.1",
     "immutable": "^4.0.0-rc.12",
+    "kind-of": "^6.0.3",
+    "minimist": "^0.2.1",
     "ramda": "^0.26.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
@@ -16,7 +19,8 @@
     "redux": "^4.0.4",
     "redux-immutable": "^4.0.0",
     "styled-components": "^4.4.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "websocket-extensions": "^0.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
