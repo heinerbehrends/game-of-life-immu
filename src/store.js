@@ -1,14 +1,14 @@
 import { createStore } from 'redux';
 import { combineReducers } from 'redux-immutable';
 import { Record, fromJS } from 'immutable';
-import { matrixReducer } from './Matrix';
+import { matrixReducer } from './matrix-reducer';
 import { delayReducer } from './StartStopButton';
 
 const initialState = Record({
   matrixReducer: fromJS(
-    Array(60)
+    Array(80)
       .fill(false)
-      .map(column => Array(110).fill(column)),
+      .map((column) => Array(160).fill(column)),
   ),
   delayReducer: null,
 });

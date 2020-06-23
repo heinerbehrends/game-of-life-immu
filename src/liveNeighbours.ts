@@ -47,8 +47,8 @@ function countLives(acc: number, neighbour: boolean): number {
 
 function countLiveNeighbours(xy: number[], matrix: matrixT): number {
   return getNeighbours(xy)
-    .filter(xy => isOnBoard(xy, matrix))
-    .map(xy => checkLive(xy, matrix))
+    .filter((xy) => isOnBoard(xy, matrix))
+    .map((xy) => checkLive(xy, matrix))
     .reduce(countLives, 0);
 }
 
@@ -57,8 +57,8 @@ export function countLiveNeighboursTorus(
   matrix: matrixT,
 ): number {
   return getNeighbours(xy)
-    .map(xy => foldTorus(xy, matrix))
-    .map(xy => checkLive(xy, matrix))
+    .map((xy) => foldTorus(xy, matrix))
+    .map((xy) => checkLive(xy, matrix))
     .reduce(countLives, 0);
 }
 

@@ -1,20 +1,27 @@
 import React, { useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { longEvolveCluster } from './action-creators';
 
 export const CELL = 'CELL';
+export const CLUSTER = 'CLUSTER';
 
 const StyledSquare = styled.div`
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   display: inline-block;
   margin: 0.66px;
-  background-color: ${props => (props.isAlive ? 'white' : 'black')};
-  border-radius: 50%;
+  background-color: ${(props) => (props.isAlive ? 'white' : 'black')};
+  ${'' /* border-radius: 50%; */}
 `;
 
 function Cell({ isAlive, x, y }) {
   const dispatch = useDispatch();
+  const setCluster = useCallback(() => dispatch(longEvolveCluster([y, x])), [
+    dispatch,
+    x,
+    y,
+  ]);
   const setCell = useCallback(
     () =>
       dispatch({
@@ -25,7 +32,7 @@ function Cell({ isAlive, x, y }) {
   );
 
   const handleClick = () => {
-    setCell([y, x]);
+    setCluster();
   };
   return <StyledSquare isAlive={isAlive} x={x} y={y} onClick={handleClick} />;
 }
