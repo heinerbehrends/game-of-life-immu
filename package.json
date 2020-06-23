@@ -10,7 +10,7 @@
     "acorn": "^7.1.1",
     "immutable": "^4.0.0-rc.12",
     "kind-of": "^6.0.3",
-    "minimist": "^0.2.1",
+    "minimist": "^1.2.3",
     "ramda": "^0.26.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
