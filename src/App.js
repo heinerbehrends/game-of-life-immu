@@ -10,9 +10,9 @@ import './App.css';
 function App() {
   // setup state and dispatch
   const dispatch = useDispatch();
-  const matrix = useSelector(state => state.matrixReducer);
-  const setMatrix = matrix => dispatch({ type: MATRIX, matrix });
-  const delay = useSelector(state => state.delayReducer);
+  const matrix = useSelector((state) => state.matrixReducer);
+  const setMatrix = (matrix) => dispatch({ type: MATRIX, matrix });
+  const delay = useSelector((state) => state.delayReducer);
   // setup simulation
   const next = useMemo(() => nextGen(matrix), [matrix]);
 

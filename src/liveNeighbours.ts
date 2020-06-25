@@ -13,15 +13,15 @@ function getNeighbours([x, y]: number[]): number[][] {
   ];
 }
 
-export type matrixT = List<List<boolean>>;
+export type matrixT = boolean[][];
 
 function isOnBoard([x, y]: number[], matrix: matrixT): boolean {
-  return x >= 0 && x < matrix.get(0)!.size && y >= 0 && y < matrix!.size;
+  return x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length;
 }
 
 function foldTorus([y, x]: number[], matrix: matrixT): number[] {
-  const numberOfCellsInRow: number = matrix.get(0)!.size;
-  const numberOfRows: number = matrix!.size;
+  const numberOfCellsInRow: number = matrix[0].length;
+  const numberOfRows: number = matrix!.length;
   if (x === -1) {
     x = numberOfCellsInRow - 1;
   }
@@ -38,7 +38,7 @@ function foldTorus([y, x]: number[], matrix: matrixT): number[] {
 }
 
 function checkLive([x, y]: number[], matrix: matrixT): boolean {
-  return matrix.getIn([y, x]);
+  return matrix[y][x];
 }
 
 function countLives(acc: number, neighbour: boolean): number {

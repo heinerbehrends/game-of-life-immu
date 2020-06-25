@@ -12,24 +12,23 @@ const StyledSquare = styled.div`
   display: inline-block;
   margin: 0.66px;
   background-color: ${(props) => (props.isAlive ? 'white' : 'black')};
-  ${'' /* border-radius: 50%; */}
 `;
 
 function Cell({ isAlive, x, y }) {
   const dispatch = useDispatch();
-  const setCluster = useCallback(() => dispatch(longEvolveCluster([y, x])), [
+  const setCluster = useCallback(() => dispatch(longEvolveCluster([x, y])), [
     dispatch,
     x,
     y,
   ]);
-  const setCell = useCallback(
-    () =>
-      dispatch({
-        type: CELL,
-        yx: [y, x],
-      }),
-    [dispatch, x, y],
-  );
+  // const setCell = useCallback(
+  //   () =>
+  //     dispatch({
+  //       type: CELL,
+  //       xy: [x, y],
+  //     }),
+  //   [dispatch, x, y],
+  // );
 
   const handleClick = () => {
     setCluster();

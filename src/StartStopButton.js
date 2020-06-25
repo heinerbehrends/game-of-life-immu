@@ -13,7 +13,7 @@ const StyledStartStopButton = styled.button`
   padding: 1rem;
 `;
 // default state is set in store.js
-export function delayReducer(state, action) {
+export function delayReducer(state = 200, action) {
   switch (action.type) {
     case DELAY:
       return action.delay;
@@ -23,7 +23,7 @@ export function delayReducer(state, action) {
 }
 
 function StartStopButton() {
-  const delay = useSelector(state => state.delayReducer);
+  const delay = useSelector((state) => state.delayReducer);
   const dispatch = useDispatch();
   function setDelay(delay) {
     dispatch({ type: DELAY, delay });
@@ -31,7 +31,7 @@ function StartStopButton() {
   return (
     <StyledStartStopButton
       onClick={() => {
-        delay ? setDelay(null) : setDelay(125);
+        delay ? setDelay(null) : setDelay(200);
       }}
     >
       {delay ? 'Stop' : 'Start'}
