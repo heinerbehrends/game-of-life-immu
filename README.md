@@ -4,7 +4,11 @@ Game-of-life-immu is an implementation of [Conway's Game of Life](https://en.wik
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The UI is implemented using the React library. State management is done using the Redux package. The application uses pure functions and [immutable Lists](https://immutable-js.github.io/immutable-js/docs/#/) to update the application state.
+The UI is implemented using the React library. State management is done using the Redux package. The application uses the immer library to update the immutable application state.
+
+## Watch it in action
+
+[Game of Life on Heroku](https://game-of-life-immutable.herokuapp.com/)
 
 ## Run game-of-life-immu on a local machine
 
