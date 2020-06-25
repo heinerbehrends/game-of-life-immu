@@ -1,5 +1,3 @@
-import { List } from 'immutable';
-
 function getNeighbours([x, y]: number[]): number[][] {
   return [
     [x - 1, y - 1],
