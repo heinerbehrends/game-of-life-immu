@@ -8,7 +8,7 @@
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "acorn": "^7.1.1",
-    "immer": "^7.0.5",
+    "immer": "^8.0.1",
     "immutable": "^4.0.0-rc.12",
     "kind-of": "^6.0.3",
     "minimist": "^1.2.5",
